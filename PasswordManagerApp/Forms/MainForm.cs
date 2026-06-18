@@ -108,6 +108,18 @@ namespace PasswordManagerApp.Forms
             };
             btnSettings.Click += (s, e) => ToggleSettings();
 
+            Button btnRandomGenerator = new Button
+            {
+                Text = "随机密码",
+                Location = new Point(75, 570),
+                Size = new Size(150, 50),
+                Font = new Font("Microsoft YaHei", 12F),
+                BackColor = Color.FromArgb(48, 63, 159),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            btnRandomGenerator.Click += (s, e) => { new RandomPasswordForm().ShowDialog(); };
+
             lblStats = new Label
             {
                 Text = "密码库已存 0 条记录\n自定义库已存 0 条记录",
@@ -133,6 +145,7 @@ namespace PasswordManagerApp.Forms
             sidebar.Controls.Add(btnLogout);
             sidebar.Controls.Add(btnChangeLoginPw);
             sidebar.Controls.Add(btnSettings);
+            sidebar.Controls.Add(btnRandomGenerator);
             sidebar.Controls.Add(lblStats);
             sidebar.Controls.Add(lblAuthor);
 
