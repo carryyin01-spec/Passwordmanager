@@ -191,6 +191,7 @@ namespace PasswordManagerApp.Forms
             btnImport.Click += BtnImport_Click;
 
             txtSearch = new TextBox { Location = new Point(700, 275), Size = new Size(250, 40), Font = new Font("Microsoft YaHei", 12F) };
+            txtSearch.KeyDown += SearchTextBox_KeyDown;
             btnSearch = new Button { Text = "🔍 搜索", Location = new Point(960, 270), Size = new Size(100, 45), Font = new Font("Microsoft YaHei", 11F), FlatStyle = FlatStyle.Flat };
             btnSearch.Click += (object? s, EventArgs e) => LoadData(txtSearch.Text);
 
@@ -625,6 +626,15 @@ namespace PasswordManagerApp.Forms
             txtExtra2.Clear();
             txtExtra3.Clear();
             dataGridView.ClearSelection();
+        }
+
+        private void SearchTextBox_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                LoadData(txtSearch.Text);
+            }
         }
 
         private void BtnExport_Click(object? sender, EventArgs e)
